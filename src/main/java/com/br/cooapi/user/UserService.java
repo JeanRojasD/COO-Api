@@ -1,6 +1,8 @@
 package com.br.cooapi.user;
 
 import com.br.cooapi.config.ModelMapperConf;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ public class UserService {
 
     private ModelMapperConf modelMapper;
 
+    Logger logger = LoggerFactory.getLogger(UserService.class);
+
     @Autowired
     public UserService(UserRepository userRepository, ModelMapperConf modelMapper) {
         this.userRepository = userRepository;
@@ -28,12 +32,22 @@ public class UserService {
     }
 
     public UserDTO create(UserForm userForm) {
+        if (userRepository.findByCpfContaining(userForm.getCpf()).isPresent()){
+            logger.error("Cpf already exists {}", userForm.getCpf());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cpf já cadastrado");
+        }
+        if (userRepository.findByEmail(userForm.getEmail()).isPresent()){
+            logger.error("Email already exists {}", userForm.getEmail());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email já cadastrado");
+        }
+
         return UserDTO.from(userRepository.save(User.from(userForm)));
     }
 
     public UserDTO update(Long id, UserForm userForm){
         User userFound = userRepository.findById(id).orElseThrow(() -> {
-           throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            logger.error("Id not found {}", id);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         });
 
         modelMapper.modelMapper().map(userForm, userFound);
