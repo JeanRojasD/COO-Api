@@ -57,7 +57,8 @@ public class UserService {
 
     public void delete(Long id){
         User user = userRepository.findById(id).orElseThrow(() -> {
-           throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            logger.error("Id not found {}", id);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         });
 
         userRepository.delete(user);
