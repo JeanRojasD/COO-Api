@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 
@@ -21,7 +22,7 @@ class UserRepositoryTest {
     @Test
     @Rollback(false)
     public void verifyUser_WhenHasCreated() {
-        UserForm userForm = new UserForm("09510077933", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+        UserForm userForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
 
         User userFinal = userRepository.save(User.from(userForm));
 
@@ -30,15 +31,33 @@ class UserRepositoryTest {
     }
 
     @Test
-    void verifyUser_WhenHasUpdated() {
+    @Rollback(false)
+    public void verifyUser_WhenCpfIsDuplicated(){
+        UserForm userForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
 
-        UserForm userSaveForm = new UserForm("09510077933", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+        User userFinal = userRepository.save(User.from(userForm));
+
+        UserForm userFormCpfDuplicated = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+        Boolean isPresent=false;
+
+        if (userRepository.findByCpfContaining(userForm.getCpf()).isPresent()){
+            isPresent=true;
+        }
+
+        assertEquals(isPresent, true);
+    }
+
+
+    @Test
+    public void verifyUser_WhenHasUpdated() {
+
+        UserForm userSaveForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
 
         Long searchId = 1L;
 
         userRepository.save(User.from(userSaveForm));
 
-        UserForm userForm = new UserForm("17253214927", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+        UserForm userForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
 
         var modelMapper = new ModelMapper();
         User userFound = userRepository.getById(searchId);
@@ -52,8 +71,8 @@ class UserRepositoryTest {
     }
 
     @Test
-    void verifyUser_WhenHasDeleted() {
-        UserForm userSaveForm = new UserForm("09510077933", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+    public void verifyUser_WhenHasDeleted() {
+        UserForm userSaveForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
 
         userRepository.save(User.from(userSaveForm));
 
