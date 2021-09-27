@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/services")
 public class ServicesController {
 
-    private ServicesService servicesService;
+    private final ServicesService servicesService;
 
     @Autowired
     public ServicesController(ServicesService servicesService) {

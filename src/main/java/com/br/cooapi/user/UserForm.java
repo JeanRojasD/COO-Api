@@ -13,6 +13,4 @@ public class UserForm {
     private String phone;
     private String senha;
 
-
-
 }
