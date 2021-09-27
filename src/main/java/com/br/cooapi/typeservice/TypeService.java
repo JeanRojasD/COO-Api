@@ -21,7 +21,6 @@ public class TypeService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull @NotBlank
     private String nome;
 
     public static TypeService from(TypeServiceForm typeServiceForm){

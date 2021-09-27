@@ -1,17 +1,17 @@
 package com.br.cooapi.services;
 
-import lombok.Data;
+import com.br.cooapi.store.Store;
+import com.br.cooapi.typeservice.TypeService;
+import lombok.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class Services {
 
     @Id
@@ -19,6 +19,11 @@ public class Services {
     private Long id;
     private Double valorPago;
     private LocalDateTime data;
+
+    @ManyToOne
+    private TypeService tpRecebeServico;
+    @ManyToOne
+    private Store loja;
 
     public static Services from(ServicesForm servicesForm) {
         ModelMapper modelMapper = new ModelMapper();
