@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
 @Service
 public class ServicesService {
 
-    private final Logger logger = LoggerFactory.getLogger(ServicesService.class);
-
     @Autowired
     private final ServicesRepository servicesRepository;
 

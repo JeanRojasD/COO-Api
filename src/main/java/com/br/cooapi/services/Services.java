@@ -1,7 +1,5 @@
 package com.br.cooapi.services;
 
-import com.br.cooapi.user.User;
-import com.br.cooapi.user.UserForm;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
