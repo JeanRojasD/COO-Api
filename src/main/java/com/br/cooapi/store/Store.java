@@ -23,6 +23,7 @@ public class Store {
     private String nome;
     private String endereco;
 
+
     public static Store from(StoreForm storeForm){
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);

@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class TypeServiceForm {
 
-    private Long id;
     @NotNull @NotBlank
     private String nome;
 }
