@@ -48,5 +48,6 @@ public class AbasteciService {
         } catch (DataAccessException e) {
             throw new DataIntegrityViolationException("Objeto não pode ser deletado!!!");
         }
+
     }
 }
