@@ -1,5 +1,8 @@
 package com.br.cooapi.brand;
 
+import com.br.cooapi.model.Model;
+import com.br.cooapi.model.ModelForm;
+import com.br.cooapi.model.ModelRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,11 +16,15 @@ public class BrandTest {
 
     @Autowired
     private BrandRepository brandRepository;
+    @Autowired
+    private ModelRepository modelRepository;
 
     @Test
     @Rollback(false)
     public void TestCreate(){
-        BrandForm brandForm = new BrandForm("Volkswagen");
+        ModelForm modelForm = new ModelForm("Gol");
+        Model model = modelRepository.save(Model.from(modelForm));
+        BrandForm brandForm = new BrandForm("Volkswagen", model);
         Brand brand = brandRepository.save(Brand.from(brandForm));
         assertEquals(brand.getMarca(), brandForm.getMarca());
     }
@@ -25,7 +32,9 @@ public class BrandTest {
     @Rollback(false)
     public void testUpdate(){
         String marca1 = "Ford";
-        BrandForm brandForm = new BrandForm("Volkswagen");
+        ModelForm modelForm = new ModelForm("Gol");
+        Model model = modelRepository.save(Model.from(modelForm));
+        BrandForm brandForm = new BrandForm("Volkswagen", model);
         Brand brand = brandRepository.save(Brand.from(brandForm));
         brandRepository.findById(1L).get();
         brand.setMarca(marca1);
@@ -35,7 +44,9 @@ public class BrandTest {
     @Test
     @Rollback(false)
     public void testDelete(){
-        BrandForm brandForm = new BrandForm("Volkswagen");
+        ModelForm modelForm = new ModelForm("Gol");
+        Model model = modelRepository.save(Model.from(modelForm));
+        BrandForm brandForm = new BrandForm("Volkswagen", model);
         brandRepository.save(Brand.from(brandForm));
         Long id = 1L;
         Boolean present1 = brandRepository.findById(id).isPresent();
