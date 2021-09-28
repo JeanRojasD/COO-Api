@@ -2,32 +2,25 @@ package com.br.cooapi.abasteci;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
-@RequiredArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
-public class Abasteci {
+public class AbasteciDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAbastecimento;
     private long vlPago;
     private LocalDateTime dataTime = LocalDateTime.now();
 
-    public static Abasteci from (AbasteciForm abasteciForm) {
+    public static AbasteciDto from (Abasteci abasteci) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        return modelMapper.map(abasteciForm, Abasteci.class);
+        return modelMapper.map(abasteci, AbasteciDto.class);
     }
-}
 
+}
