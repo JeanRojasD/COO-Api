@@ -3,13 +3,15 @@ package com.br.cooapi.services;
 
 import com.br.cooapi.store.StoreDTO;
 import com.br.cooapi.typeservice.TypeServiceDTO;
-import lombok.Data;
+import lombok.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ServicesDTO {
     
     private Long id;

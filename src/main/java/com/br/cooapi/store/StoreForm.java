@@ -1,10 +1,10 @@
 package com.br.cooapi.store;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class StoreForm {
 
     private String nome;
