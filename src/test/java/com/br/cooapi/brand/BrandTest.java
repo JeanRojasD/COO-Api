@@ -9,7 +9,7 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.xml.stream.events.Comment;
 
-import static org.junit.jupiter.api.Assertions.*;
+    import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class BrandTest {
