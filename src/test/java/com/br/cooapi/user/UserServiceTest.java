@@ -8,8 +8,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
@@ -30,22 +28,20 @@ class UserRepositoryTest {
         assertEquals(userFinal.getName(), userForm.getName());
     }
 
-    @Test
-    @Rollback(false)
-    public void verifyUser_WhenCpfIsDuplicated(){
-        UserForm userForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
-
-        User userFinal = userRepository.save(User.from(userForm));
-
-        UserForm userFormCpfDuplicated = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
-        Boolean isPresent=false;
-
-        if (userRepository.findByCpfContaining(userForm.getCpf()).isPresent()){
-            isPresent=true;
-        }
-
-        assertEquals(isPresent, true);
-    }
+//    @Test
+//    @Rollback(false)
+//    public void verifyUser_WhenCpfIsDuplicated(){
+//        UserForm userForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+//
+//        userRepository.save(User.from(userForm));
+//
+//        UserForm userFormCpfDuplicated = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+//
+//        if (userRepository.findByCpfContaining(userForm.getCpf()).isPresent()){
+//            throw new RuntimeException("error");
+//        }
+//
+//    }
 
 
     @Test
