@@ -17,6 +17,9 @@ public class StoreDTO {
     private String nome;
     private String endereco;
 
+    public StoreDTO(String nome, String endereco) {
+    }
+
 
     public static StoreDTO from(Store store){
        ModelMapper modelMapper = new ModelMapper();

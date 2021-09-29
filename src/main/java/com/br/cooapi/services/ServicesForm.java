@@ -15,4 +15,5 @@ public class ServicesForm {
     private LocalDateTime data;
     private TypeServiceDTO tpRecebeServico;
     private StoreDTO loja;
+
 }
