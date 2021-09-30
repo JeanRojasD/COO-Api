@@ -8,7 +8,7 @@ import lombok.Data;
 public class UserForm {
 
     private String cpf;
-    private String name;
+    private String username;
     private String email;
     private String phone;
     private String senha;
