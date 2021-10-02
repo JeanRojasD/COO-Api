@@ -8,6 +8,5 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: execute test
-        uses: actions/checkout@v2
-      - run: npm test
+      - name: Test Action
+        uses: drudzikatlassian/test-action@v0.0.1-alpha
