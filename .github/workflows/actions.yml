@@ -5,8 +5,11 @@ on:
       - actions
 jobs:
   build-teste:
-    name: 🎉 Deploy
+    name: 🎉 Unit Test
     runs-on: ubuntu-latest
     steps:
       - name: Test Action
-        uses: drudzikatlassian/test-action@v0.0.1-alpha
+        uses: actions/checkout@v2
+        run: TestCreate
+        with:
+          path: src\test\java\com\br\cooapi\brand
