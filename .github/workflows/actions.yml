@@ -2,7 +2,7 @@ name: actions test
 on:
   push:
     paths:
-      - 'src\test\java\com\br\cooapi\brand'
+      - '**\**\src\test\java\com\br\cooapi\brand'
       branches:
         - actions
 jobs:
