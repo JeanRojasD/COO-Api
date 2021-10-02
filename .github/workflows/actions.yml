@@ -1,0 +1,13 @@
+name: actions test
+on:
+  push:
+    branches:
+      - actions
+jobs:
+  build-teste:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: execute test
+        uses: actions/checkout@v2
+      - run: npm test
