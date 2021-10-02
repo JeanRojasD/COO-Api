@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test Action
-        uses: actions/checkout@v2
         run: TestCreate
         with:
           path: src\test\java\com\br\cooapi\brand
