@@ -1,13 +1,11 @@
 package com.br.cooapi.model;
 
+import com.br.cooapi.brand.Brand;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -16,6 +14,9 @@ public class Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String modelo;
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
 
     public static Model from (ModelForm modelForm){
         ModelMapper modelMapper = new ModelMapper();
