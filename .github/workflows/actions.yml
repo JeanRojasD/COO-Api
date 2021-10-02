@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Chekout code
       - uses: actions/checkout@v2
 
       - name: Test Action
