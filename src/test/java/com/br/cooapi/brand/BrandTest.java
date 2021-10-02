@@ -22,9 +22,7 @@ public class BrandTest {
     @Test
     @Rollback(false)
     public void TestCreate(){
-        ModelForm modelForm = new ModelForm("Gol");
-        Model model = modelRepository.save(Model.from(modelForm));
-        BrandForm brandForm = new BrandForm("Volkswagen", model);
+        BrandForm brandForm = new BrandForm("Volkswagen");
         Brand brand = brandRepository.save(Brand.from(brandForm));
         assertEquals(brand.getMarca(), brandForm.getMarca());
     }
@@ -32,9 +30,7 @@ public class BrandTest {
     @Rollback(false)
     public void testUpdate(){
         String marca1 = "Ford";
-        ModelForm modelForm = new ModelForm("Gol");
-        Model model = modelRepository.save(Model.from(modelForm));
-        BrandForm brandForm = new BrandForm("Volkswagen", model);
+        BrandForm brandForm = new BrandForm("Volkswagen");
         Brand brand = brandRepository.save(Brand.from(brandForm));
         brandRepository.findById(1L).get();
         brand.setMarca(marca1);
@@ -44,9 +40,7 @@ public class BrandTest {
     @Test
     @Rollback(false)
     public void testDelete(){
-        ModelForm modelForm = new ModelForm("Gol");
-        Model model = modelRepository.save(Model.from(modelForm));
-        BrandForm brandForm = new BrandForm("Volkswagen", model);
+        BrandForm brandForm = new BrandForm("Volkswagen");
         brandRepository.save(Brand.from(brandForm));
         Long id = 1L;
         Boolean present1 = brandRepository.findById(id).isPresent();
