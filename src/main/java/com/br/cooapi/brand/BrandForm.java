@@ -11,6 +11,5 @@ import lombok.NoArgsConstructor;
 public class BrandForm {
 
     private String marca;
-    private Model model;
 
 }
