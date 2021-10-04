@@ -37,7 +37,7 @@ public class ModelTest {
     public void TestDelete(){
         ModelForm modelForm = new ModelForm("Golf");
         modelRepository.save(Model.from(modelForm));
-        Long id = 1L;
+        Long id = 2L;
         Boolean present1 = modelRepository.findById(id).isPresent();
         modelRepository.deleteById(id);
         Boolean present2 = modelRepository.findById(id).isPresent();

@@ -48,7 +48,7 @@ public class BrandTest {
         Model model = modelRepository.save(Model.from(modelForm));
         BrandForm brandForm = new BrandForm("Volkswagen", model);
         brandRepository.save(Brand.from(brandForm));
-        Long id = 1L;
+        Long id = 2L;
         Boolean present1 = brandRepository.findById(id).isPresent();
         brandRepository.deleteById(id);
         Boolean present2 = brandRepository.findById(id).isPresent();

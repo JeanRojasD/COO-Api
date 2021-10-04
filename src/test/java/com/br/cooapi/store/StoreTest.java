@@ -34,7 +34,7 @@ public class StoreTest {
 
         storeRepository.save(Store.from(storeForm));
 
-        Long findId = 1L;
+        Long findId = 2L;
 
         StoreForm storeForm1 = new StoreForm("Oleo House", "Morenitas");
 

@@ -32,7 +32,7 @@ public class TypeServiceTest {
         TypeServiceForm typeServiceForm = new TypeServiceForm("Manutenção");
         TypeServiceForm typeServiceForm1 = new TypeServiceForm("Reparo");
         typeServiceRepository.save(TypeService.from(typeServiceForm));
-        Long findId = 1L;
+        Long findId = 2L;
 
         ModelMapper modelMapper = new ModelMapper();
         TypeService typeService = typeServiceRepository.getById(findId);
