@@ -59,41 +59,4 @@ public class ModelTest {
         assertTrue(present1);
         assertFalse(present2);
     }
-    @Test
-    public void IntTestCreate(){
-        BrandForm brandForm = new BrandForm("Volkswagen");
-        Brand brand = brandRepository.save(Brand.from(brandForm));
-        ModelForm modelForm = new ModelForm("Golf", brand);
-        Model model = modelRepository.save(Model.from(modelForm));
-        ResponseEntity<String> responseEntity = this.testRestTemplate
-                .postForEntity("http://localhost:8080/model", model, String.class);
-        assertEquals(200, responseEntity.getStatusCodeValue());
-    }
-    @Test
-    public void IntTestUpdate(){
-        String modelo1 = "Camaro";
-        BrandForm brandForm = new BrandForm("Volkswagen");
-        Brand brand = brandRepository.save(Brand.from(brandForm));
-        ModelForm modelForm = new ModelForm("Golf", brand);
-        Model model = modelRepository.save(Model.from(modelForm));
-        modelRepository.findById(1L).get();
-        model.setModelo(modelo1);
-        modelRepository.save(model);
-        ResponseEntity<String> responseEntity = this.testRestTemplate
-                .postForEntity("http://localhost:8080/model", model, String.class);
-        assertEquals(200, responseEntity.getStatusCodeValue());
-
-    }
-    @Test
-    public void IntTestDelete(){
-        BrandForm brandForm = new BrandForm("Volkswagen");
-        Brand brand = brandRepository.save(Brand.from(brandForm));
-        ModelForm modelForm = new ModelForm("Golf", brand);
-        Model model = modelRepository.save(Model.from(modelForm));
-        Long id = 1L;
-        modelRepository.deleteById(id);
-        ResponseEntity<String> responseEntity = this.testRestTemplate
-                .postForEntity("http://localhost:8080/model", model, String.class);
-        assertEquals(500, responseEntity.getStatusCodeValue());
-    }
 }
