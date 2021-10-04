@@ -7,7 +7,6 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Getter @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class ServicesForm {
 
@@ -16,4 +15,6 @@ public class ServicesForm {
     private TypeServiceDTO tpRecebeServico;
     private StoreDTO loja;
 
+    public ServicesForm(Double valorPago, LocalDateTime data, TypeServiceDTO tpRecebeServico, StoreDTO loja) {
+    }
 }

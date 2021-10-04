@@ -23,6 +23,10 @@ public class TypeService {
     private Long id;
     private String nome;
 
+    public TypeService(String nome) {
+    }
+
+
     public static TypeService from(TypeServiceForm typeServiceForm){
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
