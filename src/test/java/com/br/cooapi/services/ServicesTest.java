@@ -32,7 +32,7 @@ public class ServicesTest {
 
         serviceRepository.save(Services.from(servicesForm));
 
-        Long findId = 3L;
+        Long findId = 2L;
 
         LocalDateTime localDateTime1 = LocalDateTime.of(2015, 5, 10, 19, 1, 1);
         StoreDTO loja1 = new StoreDTO("Casa do Oleo 2","Rua JK");
@@ -93,5 +93,4 @@ public class ServicesTest {
         assertTrue(existBeforeDelete);
         assertFalse(notExistAfterDelete);
     }
-
 }
