@@ -29,18 +29,15 @@ public class TypeServiceTest {
     @Rollback(false)
     public void verifyTypeService_HasUpdated(){
 
-        TypeServiceForm typeServiceForm = new TypeServiceForm("Manutenção");
-        TypeServiceForm typeServiceForm1 = new TypeServiceForm("Reparo");
-        typeServiceRepository.save(TypeService.from(typeServiceForm));
-        Long findId = 1L;
 
+        typeServiceRepository.save(new TypeService("Imagem.png"));
+        TypeServiceForm typeServiceForm = new TypeServiceForm("OutraImagem.png");
+        Long searchId = 1L;
         ModelMapper modelMapper = new ModelMapper();
-        TypeService typeService = typeServiceRepository.getById(findId);
-
-        modelMapper.map(typeServiceForm1,typeService);
-        TypeService typeServiceUpdated = typeServiceRepository.save(typeService);
-
-        assertEquals(typeServiceForm1.getNome(), typeServiceUpdated.getNome());
+        TypeService typeService = typeServiceRepository.getById(searchId);
+        modelMapper.map(typeServiceForm, typeService);
+        typeServiceRepository.save(typeService);
+        assertEquals(typeServiceForm.getNome(), typeService.getNome());
     }
 
     @Test

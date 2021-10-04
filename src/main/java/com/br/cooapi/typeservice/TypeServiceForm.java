@@ -15,4 +15,5 @@ public class TypeServiceForm {
 
     @NotNull @NotBlank
     private String nome;
+
 }
