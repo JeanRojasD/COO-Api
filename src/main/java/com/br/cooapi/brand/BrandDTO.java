@@ -10,7 +10,6 @@ public class BrandDTO {
 
     private Long id;
     private String marca;
-    private Model model;
 
 
     public static BrandDTO from (Brand brand){

@@ -15,6 +15,9 @@ public class TypeServiceDTO {
     private Long id;
     private String nome;
 
+    public TypeServiceDTO(String nome) {
+    }
+
     public static TypeServiceDTO from(TypeService typeService){
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
