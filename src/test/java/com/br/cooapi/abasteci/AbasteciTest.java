@@ -11,7 +11,7 @@ public class AbasteciTest {
     @Autowired
     private AbasteciRepositories repositories;
 
-    Long teste = 25;
+    int teste = 25;
 
     @Test
     public void testSave () {
@@ -28,12 +28,12 @@ public class AbasteciTest {
         Abasteci abasteci = new Abasteci();
         repositories.save(abasteci);
 
-        Abasteci abasteci1 = repositories.findById(1L).get();
+        Abasteci abasteci1 = repositories.findById(1).get();
         abasteci1.setVlPago(teste);
         Abasteci postUpdate = repositories.save(abasteci1);
 
         assertEquals(postUpdate.getVlPago(), teste);
-
     }
+
 
 }
