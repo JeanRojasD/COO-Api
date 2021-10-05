@@ -20,12 +20,14 @@ public class TokenService {
     @Value("${jwt.secret}")
     private String secret;
 
-    public String generateToken(Authentication authentication){
+
+    public String generateToken(Authentication authentication) {
         User logged = (User) authentication.getPrincipal();
 
         Date today = new Date();
 
-        Instant expirationTime = Instant.now().plusSeconds(expiration);
+        Instant expirationTime = Instant.now()
+                .plusSeconds(expiration);
 
         Date expirationDate = Date.from(expirationTime);
 
@@ -35,7 +37,7 @@ public class TokenService {
         claims.put("username", logged.getUsername());
 
         return Jwts.builder()
-                .setIssuer("Application - CDO")
+                .setIssuer("RFB - ITAI")
                 .setSubject(logged.getId().toString())
                 .setIssuedAt(today)
                 .setExpiration(expirationDate)
@@ -44,18 +46,17 @@ public class TokenService {
                 .compact();
     }
 
-    public Boolean isValid(String token){
-        try{
+    public Boolean isValid(String token) {
+        try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public Long getUserId(String token){
-        Claims claims = Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token).getBody();
-        return Long.parseLong(claims.getSubject());
+    public Long getUserId(String token) {
+        Claims body = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+        return Long.valueOf((Integer) body.get("userId"));
     }
-
 }

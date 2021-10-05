@@ -3,6 +3,8 @@ package com.br.cooapi.utils;
 import com.br.cooapi.config.security.TokenService;
 import com.br.cooapi.user.User;
 import com.br.cooapi.user.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -15,34 +17,36 @@ import java.io.IOException;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
+    private final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
     private TokenService tokenService;
-    private UserRepository userRepository;
+    private UserRepository usersRepository;
 
-    public JwtAuthenticationFilter(TokenService tokenService, UserRepository userRepository) {
+    public JwtAuthenticationFilter(TokenService tokenService, UserRepository usersRepository) {
         this.tokenService = tokenService;
-        this.userRepository = userRepository;
+        this.usersRepository = usersRepository;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException{
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         String token = extractTokenFromHeader(httpServletRequest);
         Boolean validToken = tokenService.isValid(token);
-        if(validToken){
+        if (validToken) {
             authenticateCredentials(token);
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 
-    private void authenticateCredentials(String token){
+    private void authenticateCredentials(String token) {
         Long credentialsId = tokenService.getUserId(token);
-        User credential = userRepository.findById(credentialsId).get();
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(credential, null, credential.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        User credential = usersRepository.findById(credentialsId).get();
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(credential, null, credential.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
-    private String extractTokenFromHeader(HttpServletRequest httpServletRequest){
+    private String extractTokenFromHeader(HttpServletRequest httpServletRequest) {
         String header = httpServletRequest.getHeader("Authorization");
-        if (header == null || header.isEmpty() || !header.startsWith("Bearer ")){
+        if (header == null || header.isEmpty() || !header.startsWith("Bearer ")) {
+            logger.error("[JWT] Missing JWT in request headers");
             return null;
         }
         return header.substring(7);

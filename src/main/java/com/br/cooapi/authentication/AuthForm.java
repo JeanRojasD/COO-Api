@@ -6,11 +6,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 @Setter
 public class AuthForm {
 
-    private String userName;
+    private String username;
     private String password;
 
     public UsernamePasswordAuthenticationToken converter() {
-        return new UsernamePasswordAuthenticationToken(userName, password);
+        return new UsernamePasswordAuthenticationToken(username, password);
     }
 
 }
