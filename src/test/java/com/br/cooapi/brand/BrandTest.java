@@ -1,23 +1,17 @@
 package com.br.cooapi.brand;
 
-import com.br.cooapi.model.Model;
-import com.br.cooapi.model.ModelForm;
-import com.br.cooapi.model.ModelRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-
-
-    import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class BrandTest {
 
     @Autowired
     private BrandRepository brandRepository;
-    @Autowired
-    private ModelRepository modelRepository;
+
 
     @Test
     @Rollback(false)
@@ -42,7 +36,7 @@ public class BrandTest {
     public void testDelete(){
         BrandForm brandForm = new BrandForm("Volkswagen");
         brandRepository.save(Brand.from(brandForm));
-        Long id = 1L;
+        Long id = 2L;
         Boolean present1 = brandRepository.findById(id).isPresent();
         brandRepository.deleteById(id);
         Boolean present2 = brandRepository.findById(id).isPresent();
