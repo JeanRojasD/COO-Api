@@ -25,7 +25,7 @@ class UserRepositoryTest {
         User userFinal = userRepository.save(User.from(userForm));
 
         assertEquals(userFinal.getCpf(), userForm.getCpf());
-        assertEquals(userFinal.getName(), userForm.getName());
+        assertEquals(userFinal.getUsername(), userForm.getUsername());
     }
 
 //    @Test
@@ -61,7 +61,7 @@ class UserRepositoryTest {
         modelMapper.map(userForm, userFound);
         User userFinal = userRepository.save(userFound);
 
-        assertEquals(userForm.getName(), userFinal.getName());
+        assertEquals(userForm.getUsername(), userFinal.getUsername());
         assertEquals(userFinal.getCpf(), userForm.getCpf());
 
     }

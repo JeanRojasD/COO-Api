@@ -45,7 +45,7 @@ public class StoreTest {
         Store storeUpdated = storeRepository.save(store);
 
         assertEquals(storeForm1.getNome(), storeUpdated.getNome());
-        assertEquals(storeUpdated.getEndereco(), storeForm1.getEndereco());
+        assertEquals(storeForm1.getEndereco(), storeUpdated.getEndereco());
 
     }
 

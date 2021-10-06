@@ -32,15 +32,12 @@ public class TypeServiceTest {
         TypeServiceForm typeServiceForm = new TypeServiceForm("Manutenção");
         TypeServiceForm typeServiceForm1 = new TypeServiceForm("Reparo");
         typeServiceRepository.save(TypeService.from(typeServiceForm));
-        Long findId = 2L;
-
+        Long findId = 2L; 
         ModelMapper modelMapper = new ModelMapper();
-        TypeService typeService = typeServiceRepository.getById(findId);
-
-        modelMapper.map(typeServiceForm1,typeService);
-        TypeService typeServiceUpdated = typeServiceRepository.save(typeService);
-
-        assertEquals(typeServiceForm1.getNome(), typeServiceUpdated.getNome());
+        TypeService typeService = typeServiceRepository.getById(searchId);
+        modelMapper.map(typeServiceForm, typeService);
+        typeServiceRepository.save(typeService);
+        assertEquals(typeServiceForm.getNome(), typeService.getNome());
     }
 
     @Test
