@@ -72,7 +72,7 @@ class UserRepositoryTest {
 
         userRepository.save(User.from(userSaveForm));
 
-        Long id = 1L;
+        Long id = 2L;
 
         boolean isExistBeforeDelete = userRepository.findById(id).isPresent();
 

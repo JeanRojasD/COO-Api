@@ -29,10 +29,10 @@ public class TypeServiceTest {
     @Rollback(false)
     public void verifyTypeService_HasUpdated(){
 
-
-        typeServiceRepository.save(new TypeService("Imagem.png"));
-        TypeServiceForm typeServiceForm = new TypeServiceForm("OutraImagem.png");
-        Long searchId = 1L;
+        TypeServiceForm typeServiceForm = new TypeServiceForm("Manutenção");
+        TypeServiceForm typeServiceForm1 = new TypeServiceForm("Reparo");
+        typeServiceRepository.save(TypeService.from(typeServiceForm));
+        Long findId = 2L; 
         ModelMapper modelMapper = new ModelMapper();
         TypeService typeService = typeServiceRepository.getById(searchId);
         modelMapper.map(typeServiceForm, typeService);

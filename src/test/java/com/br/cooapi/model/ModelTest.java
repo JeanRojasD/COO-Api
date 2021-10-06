@@ -52,7 +52,7 @@ public class ModelTest {
         Brand brand = brandRepository.save(Brand.from(brandForm));
         ModelForm modelForm = new ModelForm("Golf", brand);
         modelRepository.save(Model.from(modelForm));
-        Long id = 1L;
+        Long id = 2L;
         Boolean present1 = modelRepository.findById(id).isPresent();
         modelRepository.deleteById(id);
         Boolean present2 = modelRepository.findById(id).isPresent();
