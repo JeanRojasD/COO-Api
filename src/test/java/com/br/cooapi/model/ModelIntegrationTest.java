@@ -1,5 +1,6 @@
 package com.br.cooapi.model;
 
+import com.br.cooapi.SecurityDefaultTest;
 import com.br.cooapi.brand.Brand;
 import com.br.cooapi.brand.BrandForm;
 import com.br.cooapi.brand.BrandRepository;
@@ -16,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ModelIntegrationTest {
+public class ModelIntegrationTest extends SecurityDefaultTest {
 
     @Autowired
     private BrandRepository brandRepository;
