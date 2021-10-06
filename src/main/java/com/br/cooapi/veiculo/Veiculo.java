@@ -1,5 +1,7 @@
 package com.br.cooapi.veiculo;
 
+import com.br.cooapi.model.Model;
+import com.br.cooapi.services.Services;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
 import javax.persistence.*;
+import java.security.Provider;
 
 @Data
 @AllArgsConstructor
@@ -18,9 +21,15 @@ public class Veiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idveiculo;
 
-    //@UniqueConstraint()
     private String placa;
     private Integer ano;
+
+    @ManyToOne
+    private Model model;
+
+    @ManyToOne
+    private Services services;
+
 
 
     public static Veiculo from(VeiculoForm veiculoForm) {

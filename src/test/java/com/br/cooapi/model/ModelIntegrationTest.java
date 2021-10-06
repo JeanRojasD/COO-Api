@@ -2,6 +2,7 @@ package com.br.cooapi.model;
 
 import com.br.cooapi.SecurityDefaultTest;
 import com.br.cooapi.brand.Brand;
+import com.br.cooapi.brand.BrandDTO;
 import com.br.cooapi.brand.BrandForm;
 import com.br.cooapi.brand.BrandRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,7 +32,7 @@ public class ModelIntegrationTest extends SecurityDefaultTest {
     public void IntTestCreate () throws Exception {
         BrandForm brandForm = new BrandForm("Volkswagen");
         Brand brand = brandRepository.save(Brand.from(brandForm));
-        ModelForm modelForm = ModelForm.builder().modelo("Golf").brand(brand).build();
+        ModelForm modelForm = ModelForm.builder().modelo("Golf").brand(BrandDTO.from(brand)).build();
         mockMvc.perform(post("/model").contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(modelForm)))
                 .andExpect(status().isOk())
@@ -41,7 +42,7 @@ public class ModelIntegrationTest extends SecurityDefaultTest {
     public void IntTestUpdate () throws Exception {
         BrandForm brandForm = new BrandForm("Volkswagen");
         Brand brand = brandRepository.save(Brand.from(brandForm));
-        ModelForm modelForm = ModelForm.builder().modelo("Gol").brand(brand).build();
+        ModelForm modelForm = ModelForm.builder().modelo("Gol").brand(BrandDTO.from(brand)).build();
         mockMvc.perform(put("/model/{id}",1).contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(modelForm)))
                 .andExpect(status().isOk())
