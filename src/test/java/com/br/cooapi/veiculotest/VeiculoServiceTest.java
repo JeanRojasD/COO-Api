@@ -29,7 +29,7 @@ public class VeiculoServiceTest {
         VeiculoForm veiculoForm = new VeiculoForm("123-abcd", 2001);
         veiculoRepository.save(Veiculo.from(veiculoForm));
 
-        VeiculoForm veiculoForm1 = new VeiculoForm("123-abcg", 2010);
+        VeiculoForm veiculoForm1 = new VeiculoForm("123-abgd", 2010);
 
         if (veiculoRepository.findByPlacaContaining(veiculoForm1.getPlaca()).isPresent()) {
 
