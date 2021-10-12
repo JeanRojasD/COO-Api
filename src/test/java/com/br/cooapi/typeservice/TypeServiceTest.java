@@ -34,7 +34,7 @@ public class TypeServiceTest {
         typeServiceRepository.save(TypeService.from(typeServiceForm));
         Long findId = 2L; 
         ModelMapper modelMapper = new ModelMapper();
-        TypeService typeService = typeServiceRepository.getById(searchId);
+        TypeService typeService = typeServiceRepository.getById(findId);
         modelMapper.map(typeServiceForm, typeService);
         typeServiceRepository.save(typeService);
         assertEquals(typeServiceForm.getNome(), typeService.getNome());
