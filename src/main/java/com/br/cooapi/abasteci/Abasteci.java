@@ -21,7 +21,11 @@ public class Abasteci {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAbastecimento;
-    private long vlPago;
+    private long precoL;
+    private long litroCombustivel;
+    private String anotacao;
+    private String nomePosto;
+    private long vlPago;//valor pago total
     private LocalDateTime dataTime = LocalDateTime.now();
 
     public static Abasteci from (AbasteciForm abasteciForm) {
