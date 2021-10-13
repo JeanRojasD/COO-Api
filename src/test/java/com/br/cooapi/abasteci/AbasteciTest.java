@@ -35,6 +35,4 @@ public class AbasteciTest {
         assertEquals(postUpdate.getVlPago(), teste);
     }
 
-
-
 }
