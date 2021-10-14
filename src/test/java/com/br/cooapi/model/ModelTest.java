@@ -1,6 +1,7 @@
 package com.br.cooapi.model;
 
 import com.br.cooapi.brand.Brand;
+import com.br.cooapi.brand.BrandDTO;
 import com.br.cooapi.brand.BrandForm;
 import com.br.cooapi.brand.BrandRepository;
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,7 @@ public class ModelTest {
     public void TestCreate(){
         BrandForm brandForm = new BrandForm("Volkswagen");
         Brand brand = brandRepository.save(Brand.from(brandForm));
-        ModelForm modelForm = new ModelForm("Golf", brand);
+        ModelForm modelForm = new ModelForm("Golf", BrandDTO.from(brand));
         Model model = modelRepository.save(Model.from(modelForm));
         assertEquals(model.getModelo(), modelForm.getModelo());
     }
@@ -38,7 +39,7 @@ public class ModelTest {
         String modelo1 = "Camaro";
         BrandForm brandForm = new BrandForm("Volkswagen");
         Brand brand = brandRepository.save(Brand.from(brandForm));
-        ModelForm modelForm = new ModelForm("Golf", brand);
+        ModelForm modelForm = new ModelForm("Golf", BrandDTO.from(brand));
         Model model = modelRepository.save(Model.from(modelForm));
         modelRepository.findById(1L).get();
         model.setModelo(modelo1);
@@ -50,7 +51,7 @@ public class ModelTest {
     public void TestDelete(){
         BrandForm brandForm = new BrandForm("Volkswagen");
         Brand brand = brandRepository.save(Brand.from(brandForm));
-        ModelForm modelForm = new ModelForm("Golf", brand);
+        ModelForm modelForm = new ModelForm("Golf", BrandDTO.from(brand));
         modelRepository.save(Model.from(modelForm));
         Long id = 2L;
         Boolean present1 = modelRepository.findById(id).isPresent();
