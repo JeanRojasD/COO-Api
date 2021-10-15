@@ -1,15 +1,13 @@
 package com.br.cooapi.abasteci;
 
+import com.br.cooapi.combustivel.Combustivel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -20,9 +18,12 @@ public class Abasteci {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAbastecimento;
-    private long vlPago;
+    private Long idAbastecimento;
+    private Double vlPago;
     private LocalDateTime dataTime = LocalDateTime.now();
+
+    @ManyToOne
+    private Combustivel combustivel;
 
     public static Abasteci from (AbasteciForm abasteciForm) {
         ModelMapper modelMapper = new ModelMapper();

@@ -1,7 +1,10 @@
 package com.br.cooapi.veiculo;
 
+import com.br.cooapi.abasteci.Abasteci;
 import com.br.cooapi.model.Model;
 import com.br.cooapi.services.Services;
+import com.br.cooapi.user.User;
+import com.br.cooapi.veiculocondicao.VeiculoCondicao;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +32,15 @@ public class Veiculo {
 
     @ManyToOne
     private Services services;
+
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Abasteci abasteci;
+
+    @ManyToOne
+    private VeiculoCondicao veiculoCondicao;
 
 
 
