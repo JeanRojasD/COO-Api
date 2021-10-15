@@ -1,5 +1,6 @@
 package com.br.cooapi.abasteci;
 
+import com.br.cooapi.config.ModelMapperConf;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -17,6 +18,9 @@ public class AbasteciService {
     @Autowired
     private AbasteciRepositories repositories;
 
+    @Autowired
+    private ModelMapperConf modelMapperConf;
+
     public List<AbasteciDto> findAll () {
         List<Abasteci> result = repositories.findAll();
         return result.stream().map(AbasteciDto::from).collect(Collectors.toList());
@@ -33,11 +37,10 @@ public class AbasteciService {
     }
 
     public AbasteciDto update (int id, AbasteciForm abasteci) {
-        ModelMapper modelMapper = new ModelMapper();
         Abasteci abasteci1 = repositories.findById(id).orElseThrow(() -> {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         });
-        modelMapper.map(abasteci, abasteci1);
+        modelMapperConf.modelMapper().map(abasteci, abasteci1);
         return AbasteciDto.from(repositories.save(abasteci1));
     }
 

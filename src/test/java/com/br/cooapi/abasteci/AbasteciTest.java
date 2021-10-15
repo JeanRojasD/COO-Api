@@ -11,12 +11,12 @@ public class AbasteciTest {
     @Autowired
     private AbasteciRepositories repositories;
 
-    int teste = 25;
+    Double teste = 25.6;
 
     @Test
     public void testSave () {
         AbasteciForm abasteciForm = new AbasteciForm();
-        abasteciForm.setVlPago(25);
+        abasteciForm.setVlPago(25.6);
 
         Abasteci abasteci = repositories.save(Abasteci.from(abasteciForm));
         assertEquals(abasteci.getVlPago(), abasteciForm.getVlPago());

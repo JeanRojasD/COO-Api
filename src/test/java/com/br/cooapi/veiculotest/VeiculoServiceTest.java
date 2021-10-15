@@ -1,9 +1,16 @@
 package com.br.cooapi.veiculotest;
 
+import com.br.cooapi.abasteci.Abasteci;
+import com.br.cooapi.abasteci.AbasteciForm;
+import com.br.cooapi.abasteci.AbasteciRepositories;
 import com.br.cooapi.brand.Brand;
 import com.br.cooapi.brand.BrandDTO;
 import com.br.cooapi.brand.BrandForm;
 import com.br.cooapi.brand.BrandRepository;
+import com.br.cooapi.combustivel.Combustivel;
+import com.br.cooapi.combustivel.CombustivelDto;
+import com.br.cooapi.combustivel.CombustivelForm;
+import com.br.cooapi.combustivel.CombustivelRepositories;
 import com.br.cooapi.model.Model;
 import com.br.cooapi.model.ModelForm;
 import com.br.cooapi.model.ModelRepository;
@@ -18,9 +25,15 @@ import com.br.cooapi.typeservice.TypeService;
 import com.br.cooapi.typeservice.TypeServiceDTO;
 import com.br.cooapi.typeservice.TypeServiceForm;
 import com.br.cooapi.typeservice.TypeServiceRepository;
+import com.br.cooapi.user.User;
+import com.br.cooapi.user.UserForm;
+import com.br.cooapi.user.UserRepository;
 import com.br.cooapi.veiculo.Veiculo;
 import com.br.cooapi.veiculo.VeiculoForm;
 import com.br.cooapi.veiculo.VeiculoRepository;
+import com.br.cooapi.veiculocondicao.VeiculoCondicao;
+import com.br.cooapi.veiculocondicao.VeiculoCondicaoForm;
+import com.br.cooapi.veiculocondicao.VeiculoCondicaoRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,6 +56,18 @@ public class VeiculoServiceTest {
 
     @Autowired
     VeiculoRepository veiculoRepository;
+
+    @Autowired
+    CombustivelRepositories combustivelRepository;
+
+    @Autowired
+    AbasteciRepositories abasteciRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    VeiculoCondicaoRepository veiculoCondicaoRepository;
 
     @Autowired
     private ModelRepository modelRepository;
@@ -72,6 +97,18 @@ public class VeiculoServiceTest {
 
         StoreForm storeForm = new StoreForm("Casa do òleo","JK");
         Store store = storeRepository.save(Store.from(storeForm));
+
+        CombustivelForm combustivelForm = new CombustivelForm("gasolina");
+        Combustivel combustivel = combustivelRepository.save(Combustivel.from(combustivelForm));
+
+        AbasteciForm abasteciForm = new AbasteciForm(12.5, CombustivelDto.from(combustivel));
+        Abasteci abasteci = abasteciRepository.save(Abasteci.from(abasteciForm));
+
+        UserForm userForm = new UserForm("105.327.479-33","Eduardo Azevedo de Lima","du-eduardo10@hotmail.com","(45)98415-2806","jeannnnnnnn");
+        User user = userRepository.save(User.from(userForm));
+
+        VeiculoCondicaoForm veiculoCondicaoForm = new VeiculoCondicaoForm("Bom");
+        VeiculoCondicao veiculoCondicao = veiculoCondicaoRepository.save(VeiculoCondicao.from(veiculoCondicaoForm));
 
         ServicesForm servicesForm = new ServicesForm(1.5, LocalDateTime.now(), TypeServiceDTO.from(typeService), StoreDTO.from(store));
         Services services = servicesRepository.save(Services.from(servicesForm));
