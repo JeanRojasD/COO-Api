@@ -26,11 +26,11 @@ public class VeiculoDTO {
     private String placa;
     private Integer ano;
 
-    private ServicesDTO servicesDTO;
-    private ModelDTO modelDTO;
-    private UserDTO userDTO;
-    private AbasteciDto abasteciDto;
-    private VeiculoCondicaoDTO veiculoCondicaoDTO;
+    private ServicesDTO services;
+    private ModelDTO model;
+    private UserDTO user;
+    private AbasteciDto abasteci;
+    private VeiculoCondicaoDTO veiculoCondicao;
 
     public static  VeiculoDTO from(Veiculo veiculo){
         ModelMapper modelMapper = new ModelMapper();
