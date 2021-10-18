@@ -22,7 +22,7 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 public class VeiculoDTO {
 
-    private Long idveiculo;
+    private Long id;
     private String placa;
     private Integer ano;
 
