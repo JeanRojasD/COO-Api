@@ -12,5 +12,5 @@ import org.springframework.test.context.ActiveProfiles;
 @Import({
         SecurityTestProfile.class
 })
-public class SecurityDefaultTest {
+public abstract class SecurityDefaultTest {
 }
