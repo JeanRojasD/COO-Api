@@ -22,7 +22,7 @@ public class Veiculo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idveiculo;
+    private Long id;
 
     private String placa;
     private Integer ano;
