@@ -1,5 +1,7 @@
 package com.br.cooapi.veiculo;
 
+import com.br.cooapi.user.User;
+import com.br.cooapi.user.UserService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,15 +11,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class VeiculoService {
 
     private final Logger logger = LoggerFactory.getLogger(VeiculoService.class);
 
     private final VeiculoRepository veiculoRepository;
+    private final UserService userService;
 
-    public VeiculoService ( VeiculoRepository veiculoRepository ){
+    public VeiculoService(VeiculoRepository veiculoRepository, UserService userService){
         this.veiculoRepository = veiculoRepository;
+        this.userService = userService;
     }
 
     public Page<VeiculoDTO> findAll(Pageable pageable) {
@@ -71,5 +79,13 @@ public class VeiculoService {
 
         veiculoRepository.delete(veiculo);
     }
-    
+
+    public List<VeiculoDTO> findByUser(Principal principal) {
+
+        User user = userService.findByCredential(principal.getName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not Found"));
+
+        List<Veiculo> veiculoList = veiculoRepository.findAllByUser(user);
+
+        return veiculoList.stream().map(VeiculoDTO :: from).collect(Collectors.toList());
+    }
 }

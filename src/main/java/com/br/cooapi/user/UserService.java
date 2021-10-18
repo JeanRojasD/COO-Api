@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -70,5 +71,9 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         return userRepository.findByUsername(userName).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+
+    public Optional<User> findByCredential(String userName) {
+        return userRepository.findByUsername(userName);
     }
 }

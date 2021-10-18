@@ -83,6 +83,7 @@ public class VeiculoServiceTest {
 
     @Autowired
     private BrandRepository brandRepository;
+
     @BeforeEach
     public void init( ) {
 

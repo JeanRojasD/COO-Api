@@ -8,6 +8,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.w3c.dom.stylesheets.LinkStyle;
+
+import java.security.Principal;
+import java.util.List;
 
 
 @RestController
@@ -30,6 +34,11 @@ public class VeiculoController {
     @GetMapping
     public ResponseEntity<Page<VeiculoDTO>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 5) Pageable pageable){
         return ResponseEntity.ok(veiculoService.findAll(pageable));
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<List<VeiculoDTO>> findByUser(Principal principal){
+        return ResponseEntity.ok(veiculoService.findByUser(principal));
     }
 
     @GetMapping("/{id}")

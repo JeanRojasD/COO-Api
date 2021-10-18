@@ -1,10 +1,13 @@
 package com.br.cooapi.user;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserForm {
 
     private String cpf;
