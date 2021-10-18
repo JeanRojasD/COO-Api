@@ -1,5 +1,12 @@
 package com.br.cooapi.veiculo;
 
+import com.br.cooapi.abasteci.AbasteciDto;
+import com.br.cooapi.model.Model;
+import com.br.cooapi.model.ModelDTO;
+import com.br.cooapi.services.Services;
+import com.br.cooapi.services.ServicesDTO;
+import com.br.cooapi.user.UserDTO;
+import com.br.cooapi.veiculocondicao.VeiculoCondicaoDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,17 +15,22 @@ import org.modelmapper.convention.MatchingStrategies;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class VeiculoDTO {
 
-    @Id
-    @GeneratedValue
     private Long idveiculo;
     private String placa;
     private Integer ano;
+
+    private ServicesDTO servicesDTO;
+    private ModelDTO modelDTO;
+    private UserDTO userDTO;
+    private AbasteciDto abasteciDto;
+    private VeiculoCondicaoDTO veiculoCondicaoDTO;
 
     public static  VeiculoDTO from(Veiculo veiculo){
         ModelMapper modelMapper = new ModelMapper();
