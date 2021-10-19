@@ -19,7 +19,7 @@ public class CombustivelController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CombustivelDto> findById (@PathVariable int idCombustivel) {
+    public ResponseEntity<CombustivelDto> findById (@PathVariable Long idCombustivel) {
         CombustivelDto combustivel = service.findById(idCombustivel);
         return ResponseEntity.ok().body(combustivel);
     }
@@ -30,12 +30,12 @@ public class CombustivelController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CombustivelDto> update (@PathVariable Integer id, @RequestBody CombustivelForm obj) {
+    public ResponseEntity<CombustivelDto> update (@PathVariable Long id, @RequestBody CombustivelForm obj) {
         return ResponseEntity.ok(service.update(id, obj));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete (@PathVariable int id) {
+    public ResponseEntity<Void> delete (@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

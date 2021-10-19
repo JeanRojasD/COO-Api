@@ -11,8 +11,8 @@ import org.modelmapper.convention.MatchingStrategies;
 @AllArgsConstructor
 public class CombustivelDto {
 
-    private int idCombusttivel;
-    private String tcombustivel;
+    private Long id;
+    private String tCombustivel;
 
     public static CombustivelDto from (Combustivel combustivel) {
         ModelMapper modelMapper = new ModelMapper();

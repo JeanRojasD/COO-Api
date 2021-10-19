@@ -19,7 +19,7 @@ public class Combustivel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCombustivel;
+    private Long id;
     private String tCombustivel;
 
     public static Combustivel from (CombustivelForm combustivelForm) {

@@ -4,6 +4,7 @@ import com.br.cooapi.abasteci.Abasteci;
 import com.br.cooapi.abasteci.AbasteciDto;
 import com.br.cooapi.abasteci.AbasteciForm;
 import com.br.cooapi.abasteci.AbasteciRepositories;
+import com.br.cooapi.config.ModelMapperConf;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -21,6 +22,9 @@ public class CombustivelService {
     @Autowired
     private CombustivelRepositories repositories;
 
+    @Autowired
+    private ModelMapperConf modelMapper;
+
     public List<CombustivelDto> findAll () {
         List<Combustivel> result = repositories.findAll();
         return result.stream().map(CombustivelDto::from).collect(Collectors.toList());
@@ -31,21 +35,20 @@ public class CombustivelService {
         return CombustivelDto.from(repositories.save(combustivel));
     }
 
-    public CombustivelDto findById (Integer id) {
+    public CombustivelDto findById (Long id) {
         Optional<Combustivel> obj = repositories.findById(id);
         return CombustivelDto.from(obj.get());
     }
 
-    public CombustivelDto update (int id, CombustivelForm combustivel) {
-        ModelMapper modelMapper = new ModelMapper();
+    public CombustivelDto update (Long id, CombustivelForm combustivel) {
         Combustivel combustivel1 = repositories.findById(id).orElseThrow(() -> {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         });
-        modelMapper.map(combustivel, combustivel1);
+        modelMapper.modelMapper().map(combustivel, combustivel1);
         return CombustivelDto.from(repositories.save(combustivel1));
     }
 
-    public void delete (Integer idCombustivel) {
+    public void delete (Long idCombustivel) {
         findById(idCombustivel);
         try {
             repositories.deleteById(idCombustivel);
