@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,9 +19,10 @@ public class Abasteci {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idAbastecimento;
-    private Double vlPago;
-    private LocalDateTime dataTime = LocalDateTime.now();
+    private Long id;
+    private Double vlLitro;
+    private Double litros;
+    private LocalDate dataTime = LocalDate.now();
 
     @ManyToOne
     private Combustivel combustivel;

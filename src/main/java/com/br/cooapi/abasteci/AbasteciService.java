@@ -31,12 +31,12 @@ public class AbasteciService {
         return AbasteciDto.from(repositories.save(abasteci));
     }
 
-    public AbasteciDto findById (Integer id) {
+    public AbasteciDto findById (Long id) {
         Optional<Abasteci> obj = repositories.findById(id);
         return AbasteciDto.from(obj.get());
     }
 
-    public AbasteciDto update (int id, AbasteciForm abasteci) {
+    public AbasteciDto update (Long id, AbasteciForm abasteci) {
         Abasteci abasteci1 = repositories.findById(id).orElseThrow(() -> {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         });
@@ -44,7 +44,7 @@ public class AbasteciService {
         return AbasteciDto.from(repositories.save(abasteci1));
     }
 
-    public void delete (Integer idAbasteci) {
+    public void delete (Long idAbasteci) {
         findById(idAbasteci);
         try {
             repositories.deleteById(idAbasteci);

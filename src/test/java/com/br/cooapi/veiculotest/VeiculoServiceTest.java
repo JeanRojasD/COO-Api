@@ -102,7 +102,7 @@ public class VeiculoServiceTest {
         CombustivelForm combustivelForm = new CombustivelForm("gasolina");
         Combustivel combustivel = combustivelRepository.save(Combustivel.from(combustivelForm));
 
-        AbasteciForm abasteciForm = new AbasteciForm(12.5, CombustivelDto.from(combustivel));
+        AbasteciForm abasteciForm = new AbasteciForm(12.5, 10.0, CombustivelDto.from(combustivel));
         Abasteci abasteci = abasteciRepository.save(Abasteci.from(abasteciForm));
 
         UserForm userForm = new UserForm("624.274.409-06","Robson João Cleber","clebinhoRobi@hotmail.com","(45)98415-2806","gkh4gf6");

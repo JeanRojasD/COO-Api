@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
 import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,9 +17,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class AbasteciDto {
 
-    private Long idAbastecimento;
-    private Double vlPago;
-    private LocalDateTime dataTime = LocalDateTime.now();
+    private Long id;
+    private Double vlLitro;
+    private Double litros;
+    private LocalDate dataTime;
 
     private CombustivelDto combustivel;
 

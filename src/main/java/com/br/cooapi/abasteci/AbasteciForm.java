@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class AbasteciForm {
 
-    private Double vlPago;
-
+    private Double vlLitro;
+    private Double litros;
     private CombustivelDto combustivel;
 
 }
