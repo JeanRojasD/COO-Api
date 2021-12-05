@@ -2,6 +2,8 @@ package com.br.cooapi.abasteci;
 
 import com.br.cooapi.combustivel.Combustivel;
 import com.br.cooapi.combustivel.CombustivelDto;
+import com.br.cooapi.veiculo.Veiculo;
+import com.br.cooapi.veiculo.VeiculoDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +23,7 @@ public class AbasteciDto {
     private Double vlLitro;
     private Double litros;
     private LocalDate dataTime;
-
+    private VeiculoDTO veiculos;
     private CombustivelDto combustivel;
 
     public static AbasteciDto from (Abasteci abasteci) {

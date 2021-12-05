@@ -1,7 +1,9 @@
 package com.br.cooapi.abasteci;
 
 import com.br.cooapi.config.ModelMapperConf;
-import org.modelmapper.ModelMapper;
+import com.br.cooapi.veiculo.Veiculo;
+import com.br.cooapi.veiculo.VeiculoDTO;
+import com.br.cooapi.veiculo.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -17,6 +19,9 @@ import java.util.stream.Collectors;
 public class AbasteciService {
     @Autowired
     private AbasteciRepositories repositories;
+
+    @Autowired
+    private VeiculoService veiculoService;
 
     @Autowired
     private ModelMapperConf modelMapperConf;
@@ -52,5 +57,11 @@ public class AbasteciService {
             throw new DataIntegrityViolationException("Objeto não pode ser deletado!!!");
         }
 
+    }
+
+    public List<AbasteciDto> findByVeiculo(Long id) {
+        VeiculoDTO veiculoDTO = veiculoService.findById(id);
+        List<Abasteci> result = repositories.findByVeiculos(Veiculo.from(veiculoDTO));
+        return result.stream().map(AbasteciDto::from).collect(Collectors.toList());
     }
 }

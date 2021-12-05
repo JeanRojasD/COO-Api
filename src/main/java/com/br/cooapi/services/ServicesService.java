@@ -1,5 +1,8 @@
 package com.br.cooapi.services;
 
+import com.br.cooapi.veiculo.Veiculo;
+import com.br.cooapi.veiculo.VeiculoDTO;
+import com.br.cooapi.veiculo.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -12,7 +15,10 @@ import java.util.stream.Collectors;
 public class ServicesService {
 
     @Autowired
-    private final ServicesRepository servicesRepository;
+    private ServicesRepository servicesRepository;
+
+    @Autowired
+    private VeiculoService veiculoService;
 
     public ServicesService(ServicesRepository servicesRepository){this.servicesRepository = servicesRepository;}
 
@@ -37,5 +43,11 @@ public class ServicesService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         });
         servicesRepository.delete(services);
+    }
+
+    public List<ServicesDTO> findByServices(Long id) {
+        VeiculoDTO veiculoDTO = veiculoService.findById(id);
+        List<Services> services = servicesRepository.findByServices(Veiculo.from(veiculoDTO));
+        return services.stream().map(ServicesDTO::from).collect(Collectors.toList());
     }
 }

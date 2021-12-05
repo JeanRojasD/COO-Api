@@ -23,6 +23,11 @@ public class ServicesController {
         return ResponseEntity.ok(servicesService.findAll());
     }
 
+    @GetMapping("services/{id}")
+    public ResponseEntity<List<ServicesDTO>> findByServices(@PathVariable Long id) {
+        return ResponseEntity.ok(servicesService.findByServices(id));
+    }
+
     @PostMapping
     public ResponseEntity<ServicesDTO> create(@RequestBody @Valid ServicesForm servicesForm){
         return ResponseEntity.ok(servicesService.create(servicesForm));

@@ -31,13 +31,7 @@ public class Veiculo {
     private Model model;
 
     @ManyToOne
-    private Services services;
-
-    @ManyToOne
     private User user;
-
-    @ManyToOne
-    private Abasteci abasteci;
 
     @ManyToOne
     private VeiculoCondicao veiculoCondicao;
@@ -51,5 +45,10 @@ public class Veiculo {
         return modelMapper.map(veiculoForm, Veiculo.class);
     }
 
+    public static Veiculo from(VeiculoDTO veiculo) {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
+        return modelMapper.map(veiculo, Veiculo.class);
+    }
 }

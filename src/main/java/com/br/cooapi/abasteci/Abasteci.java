@@ -1,6 +1,7 @@
 package com.br.cooapi.abasteci;
 
 import com.br.cooapi.combustivel.Combustivel;
+import com.br.cooapi.veiculo.Veiculo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,8 @@ public class Abasteci {
     private Long id;
     private Double vlLitro;
     private Double litros;
+    @ManyToOne
+    private Veiculo veiculos;
     private LocalDate dataTime = LocalDate.now();
 
     @ManyToOne

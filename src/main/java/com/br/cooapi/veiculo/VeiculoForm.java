@@ -23,11 +23,8 @@ public class VeiculoForm {
 
     private String placa;
     private Integer ano;
-
-    private ServicesDTO services;
     private ModelDTO model;
     private UserDTO user;
-    private AbasteciDto abasteci;
     private VeiculoCondicaoDTO veiculoCondicao;
 
 
