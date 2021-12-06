@@ -23,7 +23,7 @@ public class ServicesController {
         return ResponseEntity.ok(servicesService.findAll());
     }
 
-    @GetMapping("services/{id}")
+    @GetMapping("veiculo/{id}")
     public ResponseEntity<List<ServicesDTO>> findByVeiculos(@PathVariable Long id) {
         return ResponseEntity.ok(servicesService.findByVeiculos(id));
     }
