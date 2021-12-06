@@ -10,6 +10,5 @@ import java.util.List;
 
 @Repository
 public interface AbasteciRepositories extends JpaRepository<Abasteci, Long> {
-
     List<Abasteci> findByVeiculos(Veiculo veiculo);
 }

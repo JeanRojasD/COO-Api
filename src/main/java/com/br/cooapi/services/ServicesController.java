@@ -24,8 +24,8 @@ public class ServicesController {
     }
 
     @GetMapping("services/{id}")
-    public ResponseEntity<List<ServicesDTO>> findByServices(@PathVariable Long id) {
-        return ResponseEntity.ok(servicesService.findByServices(id));
+    public ResponseEntity<List<ServicesDTO>> findByVeiculos(@PathVariable Long id) {
+        return ResponseEntity.ok(servicesService.findByVeiculos(id));
     }
 
     @PostMapping

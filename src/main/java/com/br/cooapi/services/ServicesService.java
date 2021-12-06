@@ -45,9 +45,10 @@ public class ServicesService {
         servicesRepository.delete(services);
     }
 
-    public List<ServicesDTO> findByServices(Long id) {
+
+    public List<ServicesDTO> findByVeiculos(Long id) {
         VeiculoDTO veiculoDTO = veiculoService.findById(id);
-        List<Services> services = servicesRepository.findByServices(Veiculo.from(veiculoDTO));
+        List<Services> services = servicesRepository.findByVeiculo(Veiculo.from(veiculoDTO));
         return services.stream().map(ServicesDTO::from).collect(Collectors.toList());
     }
 }

@@ -111,8 +111,8 @@ public class VeiculoServiceTest {
         VeiculoCondicaoForm veiculoCondicaoForm = new VeiculoCondicaoForm("Bom");
         VeiculoCondicao veiculoCondicao = veiculoCondicaoRepository.save(VeiculoCondicao.from(veiculoCondicaoForm));
 
-        ServicesForm servicesForm = new ServicesForm(1.5, LocalDateTime.now(), TypeServiceDTO.from(typeService), StoreDTO.from(store));
-        Services services = servicesRepository.save(Services.from(servicesForm));
+//        ServicesForm servicesForm = new ServicesForm(1.5, LocalDateTime.now(), TypeServiceDTO.from(typeService), StoreDTO.from(store));
+//        Services services = servicesRepository.save(Services.from(servicesForm));
 
     }
 
