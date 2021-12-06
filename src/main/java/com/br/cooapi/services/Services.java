@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,7 +22,7 @@ public class Services {
     private Double valorPago;
     @ManyToOne
     private Veiculo veiculo;
-    private LocalDateTime data;
+    private LocalDate data;
 
     @ManyToOne
     private TypeService tpRecebeServico;

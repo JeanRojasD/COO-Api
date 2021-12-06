@@ -8,6 +8,7 @@ import lombok.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter @Setter
@@ -17,7 +18,7 @@ public class ServicesDTO {
     
     private Long id;
     private Double valorPago;
-    private LocalDateTime data;
+    private LocalDate data;
     private VeiculoDTO veiculo;
     private TypeServiceDTO tpRecebeServico;
     private StoreDTO loja;
