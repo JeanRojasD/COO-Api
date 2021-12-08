@@ -1,5 +1,6 @@
 package com.br.cooapi.veiculo;
 
+import com.br.cooapi.config.ModelMapperConf;
 import com.br.cooapi.user.User;
 import com.br.cooapi.user.UserService;
 import org.modelmapper.ModelMapper;
@@ -22,10 +23,12 @@ public class VeiculoService {
 
     private final VeiculoRepository veiculoRepository;
     private final UserService userService;
+    private final ModelMapperConf modelMapperConf;
 
-    public VeiculoService(VeiculoRepository veiculoRepository, UserService userService){
+    public VeiculoService(VeiculoRepository veiculoRepository, UserService userService, ModelMapperConf modelMapperConf) {
         this.veiculoRepository = veiculoRepository;
         this.userService = userService;
+        this.modelMapperConf = modelMapperConf;
     }
 
     public Page<VeiculoDTO> findAll(Pageable pageable) {
@@ -65,7 +68,7 @@ public class VeiculoService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         });
 
-        modelMapper.map(veiculoForm, veiculoFound);
+        modelMapperConf.modelMapper().map(veiculoForm, veiculoFound);
 
         return VeiculoDTO.from(veiculoRepository.save(veiculoFound));
     }
