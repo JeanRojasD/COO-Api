@@ -31,6 +31,8 @@ INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('20
 INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 98.4 , 1, 2);
 INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 45.9 , 1, 3);
 INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 21.6 , 1, 3);
+
 INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 98.4 , 1, 2);
+
 INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 45.9 , 1, 1);
 
