@@ -10,6 +10,7 @@ public class UserDTO {
     private Long id;
     private String cpf;
     private String username;
+    private String name;
     private String email;
     private String phone;
 

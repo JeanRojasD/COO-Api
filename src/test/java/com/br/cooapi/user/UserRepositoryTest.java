@@ -20,7 +20,7 @@ class UserRepositoryTest {
     @Test
     @Rollback(false)
     public void verifyUser_WhenHasCreated() {
-        UserForm userForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+        UserForm userForm = new UserForm("21584812001", "Jean","João Vitor", "jeanrojas@email.com", "9955588744", "jean12345");
 
         User userFinal = userRepository.save(User.from(userForm));
 
@@ -47,13 +47,13 @@ class UserRepositoryTest {
     @Test
     public void verifyUser_WhenHasUpdated() {
 
-        UserForm userSaveForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+        UserForm userSaveForm = new UserForm("21584812001", "Jean","Jean Rojas", "jeanrojas@email.com", "9955588744", "jean12345");
 
         Long searchId = 1L;
 
         userRepository.save(User.from(userSaveForm));
 
-        UserForm userForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+        UserForm userForm = new UserForm("21584812001", "Jean","Jean Rojas", "jeanrojas@email.com", "9955588744", "jean12345");
 
         var modelMapper = new ModelMapper();
         User userFound = userRepository.getById(searchId);
@@ -68,7 +68,7 @@ class UserRepositoryTest {
 
     @Test
     public void verifyUser_WhenHasDeleted() {
-        UserForm userSaveForm = new UserForm("21584812001", "Jean", "jeanrojas@email.com", "9955588744", "jean12345");
+        UserForm userSaveForm = new UserForm("21584812001", "Jean","Jean", "jeanrojas@email.com", "9955588744", "jean12345");
 
         userRepository.save(User.from(userSaveForm));
 

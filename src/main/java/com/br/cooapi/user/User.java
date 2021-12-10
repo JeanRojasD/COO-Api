@@ -27,6 +27,7 @@ public class User implements UserDetails {
     @CPF
     private String cpf;
     private String username;
+    private String name;
     @Email
     private String email;
     private String phone;
