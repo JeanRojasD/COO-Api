@@ -27,13 +27,13 @@ public class Veiculo {
     private String placa;
     private Integer ano;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Model model;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private VeiculoCondicao veiculoCondicao;
 
 
