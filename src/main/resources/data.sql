@@ -26,11 +26,11 @@ INSERT INTO services(data,valor_pago,loja_id,tp_recebe_servico_id,veiculo_id) VA
 INSERT INTO services(data,valor_pago,loja_id,tp_recebe_servico_id,veiculo_id) VALUES ('2019-04-19',500.40, 1, 1, 3);
 /*INSERT INTO abasteci(vlLitro , litros, data_time, combustivel_id, veiculos_id) VALUES (5.99, 13.6 , '2021-10-12',  1, 1);
 INSERT INTO abasteci(vlLitro , litros, data_time, combustivel_id, veiculos_id) VALUES (4.60, 22.4 , '2021-10-12', 1, 1);
-INSERT INTO abasteci(vlLitro , litros, data_time, combustivel_id, veiculos_id) VALUES (3.60, 16.9 , '2021-10-12', 1, 1);*/
+INSERT INTO abasteci(vlLitro , litros, data_time, combustivel_id, veiculos_id) VALUES (3.60, 16.9 , '2021-10-12', 1, 1);
 INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 21.6 , 1, 1);
 INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 98.4 , 1, 2);
 INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 45.9 , 1, 3);
-INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 21.6 , 1, 3);
+INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 21.6 , 1, 3);*/
 
 INSERT INTO abasteci(data_time, litros, combustivel_id, veiculos_id) VALUES ('2021-10-12', 98.4 , 1, 2);
 

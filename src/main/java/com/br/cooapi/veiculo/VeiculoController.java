@@ -47,8 +47,8 @@ public class VeiculoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<VeiculoDTO> update(@PathVariable Long id, @RequestBody @Validated VeiculoForm veiculoForm){
-        return  ResponseEntity.ok(veiculoService.update(veiculoForm, id));
+    public ResponseEntity<VeiculoDTO> update(@PathVariable Long id, @RequestBody VeiculoForm veiculoForm){
+        return  ResponseEntity.ok(veiculoService.update(id, veiculoForm));
     }
 
     @DeleteMapping("/{id}")

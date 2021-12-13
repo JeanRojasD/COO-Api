@@ -60,26 +60,22 @@ public class VeiculoService {
 
     }
 
-    public VeiculoDTO update(VeiculoForm veiculoForm, Long id){
-
-        var modelMapper = new ModelMapper();
-        var veiculoFound = veiculoRepository.findById(id).orElseThrow(() -> {
+    public VeiculoDTO update(Long id, VeiculoForm veiculoForm){
+       Veiculo veiculo  = veiculoRepository.findById(id).orElseThrow(() -> {
             logger.error("Veiculo not found {}", id);
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         });
 
-        modelMapperConf.modelMapper().map(veiculoForm, veiculoFound);
+        modelMapperConf.modelMapper().map(veiculoForm, veiculo);
 
-        return VeiculoDTO.from(veiculoRepository.save(veiculoFound));
+        return VeiculoDTO.from(veiculoRepository.save(veiculo));
     }
 
-    public void delete (Long id ){
-
+    public void delete (Long id){
         Veiculo veiculo = veiculoRepository.findById(id).orElseThrow(() -> {
             logger.error("ID not Found");
-            throw new ResponseStatusException(HttpStatus.CONFLICT);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         });
-
         veiculoRepository.delete(veiculo);
     }
 
